@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	va_list print_em;
 	unsigned int i = 0;
-	int count = 0;
+	int count = 0,j;
 	char *str;
 
 	va_start(print_em, format);
@@ -26,11 +26,11 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(print_em, char *);
-					case_s(str);
-					break;
-				case 'r':
-					pu_tchar('%', format[i]);
-					count++;
+					for (j = 0; str[j] != '\0'; j++)
+					{
+						p_utchar(str[j]);
+						count++;
+					}
 					break;
 				default:
 					p_utchar(format[i]);
