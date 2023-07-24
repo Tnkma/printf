@@ -32,9 +32,13 @@ int _printf(const char *format, ...)
 						count++;
 					}
 					break;
-				default:
+				case 'r'
 					pu_tchar('%', format[i]);
-					count += 2;
+					count++;
+					break;
+				default:
+					p_utchar(format[i]);
+					count++;
 					break;
 			}
 		}
