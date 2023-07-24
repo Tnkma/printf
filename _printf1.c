@@ -33,8 +33,8 @@ int _printf(const char *format, ...)
 					}
 					break;
 				default:
-					p_utchar(format[i]);
-					count++;
+					pu_tchar('%', format[i]);
+					count += 2;
 					break;
 			}
 		}
