@@ -9,6 +9,7 @@ int _printf(const char *format, ...);
 int p_utchar(char c);
 void pu_tchar(char c1, char c2);
 int case_s(char *s);
+void convert_binary(unsigned int nb);
 
 
 
