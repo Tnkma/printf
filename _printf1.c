@@ -8,8 +8,8 @@
 int _printf(const char *format, ...)
 {
 	va_list print_em;
-	unsigned int i = 0,m;
-	int count = 0,j;
+	unsigned int i = 0, m;
+	int count = 0, j;
 	char *str;
 
 	va_start(print_em, format);
@@ -18,38 +18,33 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
+			if (format[i] == 'c')
 			{
-				case 'c':
-					p_utchar(va_arg(print_em, int));
-					count++;
-					break;
-				case 's':
-					str = va_arg(print_em, char *);
+				p_utchar(va_arg(print_em, int));
+				count++; }
+			else if (format[i] == 's')
+			{
+				str = va_arg(print_em, char *);
 					for (j = 0; str[j] != '\0'; j++)
 					{
 						p_utchar(str[j]);
-						count++;
-					}
-					break;
-				case 'b':
-					m = va_arg(print_em, int);
-					convert_binary(m);
-					count++;
-					break;
-				default:
-					p_utchar(format[i]);
-					count++;
-					break;
+						count++; }
 			}
+			else if (format[i] == 'b')
+			{
+				m = va_arg(print_em, int);
+				convert_binary(m);
+				count++; }
+			else
+			{
+				p_utchar(format[i]);
+				count++; }
 		}
 		else
 		{
 			p_utchar(format[i]);
-			count++;
-		}
-		i++;
-	}
+			count++; }
+		i++; }
 	va_end(print_em);
 	return (count);
 }
