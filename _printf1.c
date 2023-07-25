@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	va_list print_em;
-	unsigned int i = 0;
+	unsigned int i = 0,m;
 	int count = 0,j;
 	char *str;
 
@@ -31,6 +31,11 @@ int _printf(const char *format, ...)
 						p_utchar(str[j]);
 						count++;
 					}
+					break;
+				case 'b':
+					m = va_arg(print_em, int);
+					convert_binary(m);
+					count++;
 					break;
 				default:
 					p_utchar(format[i]);

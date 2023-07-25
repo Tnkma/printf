@@ -7,20 +7,20 @@
  * Return: the count of int printed
  */
 
-void b_convert(const char *format, ...)
+void b_convert(const char format, ...)
 {
 	va_list numb;
 	int i;
 
 	va_start(numb, format);
 
-	while (*format != '\0')
+	if (format != '\0')
 	{
-		if (*format == '%')
+		if (format == '%')
 		{
-			format++;
+			/*format++;*/
 
-			if (*format == 'r')
+			if (format == 'r')
 			{
 				i = va_arg(numb, int);
 				convert_binary(i);
@@ -28,9 +28,9 @@ void b_convert(const char *format, ...)
 		}
 		else
 		{
-			p_utchar(*format);
+			p_utchar(format);
 		}
-		format++;
+		/*format++;*/
 	}
 
 	va_end(numb);
